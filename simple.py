@@ -11,9 +11,10 @@ def people():
     if not name:
         return redirect(url_for('login'))
     user_agent = request.headers.get('User-Agent')
+    print user_agent
     return 'Name: {0}; UA: {1}'.format(name,user_agent)
 
-@app.route('/login/',method = ['GET','POST'])
+@app.route('/login/',methods = ['GET','POST'])
 def login():
     if request.method == 'POST':
         user_id = request.form.get('user_id')
@@ -22,10 +23,11 @@ def login():
         return 'Open login page'
 
 
-@app.route('/select/')
+@app.route('/secret/')
 def secert():
     abort(401)
     print 'This will never executed'
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port=5000,debug=app.debug)

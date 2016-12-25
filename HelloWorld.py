@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from flask import Flask    # Flask 实现了wsgi应用
 from flask import url_for
+from backports.shutil_get_terminal_size import get_terminal_size as _get_terminal_size
 
 app = Flask(__name__)
 

@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from flask import Flask, jsonify
 from werkzeug.wrappers import Response
 
-app = Flask(__name__)
+app = Flask(__name__,static_folder='/tmp')
 
 class JSONResponse(Response):
     @classmethod
@@ -20,8 +20,8 @@ def hello_world():
 
 @app.route('/custom_headers')
 def headers():
-    return  {'headers': [1,2,3]},202,[('X-Request-Id','100--')]
+    return  {'headers': [1,2,3]},'201 created By Yang',[('X-Request-Id','100--')]
 
 if __name__ == '__main__':
-    app.run(host = '0.0.0.0',port = 5000)
+    app.run(host = '0.0.0.0',port = 5000,debug = app.debug)
 

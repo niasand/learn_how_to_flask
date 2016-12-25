@@ -7,7 +7,7 @@ app.config['SERVER_NAME'] = 'yang.com:5000'
 
 @app.url_value_preprocessor
 def get_site(endpoint,values):
-    g.site = values.pop('subdomain')
+    g.site = values.pop('subdomain') + "  yang...."
 
 @app.route('/',subdomain = '<subdomain>')
 def index():

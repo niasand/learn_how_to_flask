@@ -9,7 +9,7 @@ manager.add_command("runserver",Server(host='0.0.0.0',port=5000,use_debugger=Tru
 
 @manager.command
 def save_todo():
-    todo = Todo(content="my first todo")
+    todo = Todo(content="my second todo")
     todo.save()
 
 

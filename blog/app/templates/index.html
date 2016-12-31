@@ -1,3 +1,5 @@
+{% extends "base.html" %}
+{% block content %}
 <form class="input-group" action="/add" method="post">
     {{ form.hidden_tag() }}
     {{ form.content(class="form-control") }}
@@ -11,7 +13,6 @@
 <div class="flash alert-danger"><span>{{ error }}</span></div>
 
 {% endfor %}
-
 
 <div>
 <h2>Todo List</h2>
@@ -53,3 +54,5 @@
     <h3 class="text-info">No todos,pelease add</h3>
 {% endif %}
 </div>
+
+{% endblock %}

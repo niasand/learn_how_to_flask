@@ -54,3 +54,7 @@ def delete(todo_id):
     todo.delete()
     todos = Todo.objects.order_by('-time')
     return render_template("index.html",todos=todos,form=form)
+
+@app.errorhandler(404)
+def not_found(e):
+    return render_template('404.html'),404

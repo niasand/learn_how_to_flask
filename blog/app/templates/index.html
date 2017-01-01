@@ -2,11 +2,24 @@
 {% block content %}
 <form class="input-group" action="/add" method="post">
     {{ form.hidden_tag() }}
-    {{ form.content(class="form-control") }}
-    <span class="input-group-btn">
-         <button class="btn btn-primary" type="submit">Add</button>
-    </span>
+    <span>Money:{{ form.money(class="form-control") }}</span>
 </form>
+
+<form class="input-group" action="/add" method="post">
+    {{ form.hidden_tag() }}
+    <span>Shop: {{ form.shop(class="form-control") }}</span>
+</form>
+
+<form class="input-group" action="/add" method="post">
+    {{ form.hidden_tag() }}
+    <span>Content: {{ form.content(class="form-control") }}</span>
+
+</form>
+
+    <form class="input-group-btn">
+            {{ form.hidden_tag() }}
+         <button class="btn btn-primary" type="submit">Add</button>
+    </form>
 
 {%for error in form.errors.content %}
 
@@ -15,43 +28,35 @@
 {% endfor %}
 
 <div>
-<h2>Todo List</h2>
+<h2>记账本</h2>
 {% if todos %}
     <table class="table">
     <thead>
         <tr>
+            <th>money</th>
             <th>content</td>
+            <th>shop</th>
             <th>time</td>
             <th>operation</td>
         </tr>
     </thead>
     <tbody>
      {% for t in todos %}
-        {% if t.status == 0 %}
-            <tr class="info">
-                <td>{{ t.content }}</td>
-                <td>{{ t.time.strftime('%H:%M %d-%m-%Y') }}</td>
-                <td>
-                    <a href="/done/{{ t.id }}" class="btn btn-primary">Done</a>
-                    <a href="/delete/{{ t.id }}" class="btn btn-danger">Delete</a>
-                </td>
-            </tr>
-         {% else %}
-              <tr class="danger">
-                <td id="center" >{{ t.content }}</td>
-                <td>{{ t.time.strftime('%H:%M %d-%m-%Y') }}</td>
-                <td>
-                    <a href="/undone/{{ t.id }}" class="btn btn-primary">Undone</a>
-                    <a href="/delete/{{ t.id }}" class="btn btn-danger">Delete</a>
-                </td>
-            </tr>
 
-         {% endif %}
+            <tr class="info">
+                <td>{{ t.money }}</td>
+                <td>{{ t.content }}</td>
+                <td>{{ t.shop }}</td>
+                <td>{{ t.time.strftime('%H:%M %d-%m-%Y') }}</td>
+                <td>
+                    <a href="/delete/{{ t.id }}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
         {% endfor %}
     </tbody>
     </table>
 {% else %}
-    <h3 class="text-info">No todos,please add</h3>
+    <h3 class="text-info">No bills ,please add it</h3>
 {% endif %}
 </div>
 

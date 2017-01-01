@@ -1,3 +1,3 @@
 SECRET_KEY = "never tell you"
-MONGODB_SETTINGS = {'DB': 'todo_db'}
+MONGODB_SETTINGS = {'DB': 'payrecord'}
 WTF_CSRF_ENABLED = False
